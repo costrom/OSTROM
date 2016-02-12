@@ -12,12 +12,7 @@ std::vector<double> addArrays(const std::vector<double> A, const std::vector<dou
 
 std::vector<double> multArrays(const std::vector<double> A, const double scalarMult)
 {
-	std::vector<double> C(A.size());
-	for (unsigned int ii = 0; ii < A.size(); ii++)
-	{
-		C[ii] = A[ii] * scalarMult;
-	};
-	return C;
+	return std::transform(A.begin(), A.end(), A.begin(),std::bind1st(std::multiplies<T>(),scalarMult));;
 }
 
 std::vector<double> operator+(const std::vector<double>& A, const std::vector<double>& B)
