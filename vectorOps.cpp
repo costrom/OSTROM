@@ -1,24 +1,24 @@
 #include "vectorOps.h"
-
-std::vector<double> addArrays(const std::vector<double> A, const std::vector<double> B)
-{
-	std::vector<double> C(A.size());
-	for (unsigned int ii = 0; ii < A.size(); ii++)
-	{
-		C[ii] = A[ii] + B[ii];
-	};
-	return C;
-}
+#include "algorithm"
+#include "functional"
 
 std::vector<double> multArrays(const std::vector<double> A, const double scalarMult)
 {
 	return std::transform(A.begin(), A.end(), A.begin(),std::bind1st(std::multiplies<T>(),scalarMult));;
 }
 
-std::vector<double> operator+(const std::vector<double>& A, const std::vector<double>& B)
+template <typename T>
+std::vector<T> operator+(const std::vector<T>& a, const std::vector<T>& b)
 {
-	return addArrays(A, B);
-};
+    assert(a.size() == b.size());
+
+    std::vector<T> result;
+    result.reserve(a.size());
+
+    std::transform(a.begin(), a.end(), b.begin(), 
+                   std::back_inserter(result), std::plus<T>());
+    return result;
+}
 
 std::vector<double> operator*(const std::vector<double>& A, const double& c)
 {
