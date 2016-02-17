@@ -5,8 +5,8 @@
 #include <iostream>
 #include <vector>
 
-extern const double gamma;
-extern const double R;
+static const double gamma = 1.4;
+static const double R = 287.0;
 static const double S = 110.4;
 static const double beta = 1.458e-6;
 
