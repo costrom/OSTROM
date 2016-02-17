@@ -15,8 +15,8 @@ static const unsigned int sz = 100001;
 void usstdatm1976(double& h, double& T, double& p, double& rho, double& mu, double& a)
 {
     if (h > 1e6)
-	{
-		h = 1e6;
+    {
+	h = 1e6;
 	};
 
 	if (h < 0)
