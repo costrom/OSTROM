@@ -39,6 +39,12 @@
     <ClCompile Include="vectorOps.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="usstdatm1976.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="usstdatm1976data.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cylinder.h">
@@ -75,6 +81,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="materialsList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="atmprops.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="usstdatm1976.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="usstdatm1976data.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

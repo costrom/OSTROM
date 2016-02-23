@@ -3,7 +3,7 @@
 
 #include "atmprops.h"
 
-void atmos(int& model, atmprops& atmProperties)
+void atmos(atmprops& atmProperties);
 
 #endif
 

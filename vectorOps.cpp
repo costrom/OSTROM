@@ -2,7 +2,8 @@
 #include "algorithm"
 #include "functional"
 
-std::vector<double> multArrays(const std::vector<double> A, const double scalarMult)
+template <typename T>
+std::vector<T> multArrays(const std::vector<T> A, const T scalarMult)
 {
 	return std::transform(A.begin(), A.end(), A.begin(),std::bind1st(std::multiplies<T>(),scalarMult));;
 }
@@ -20,12 +21,14 @@ std::vector<T> operator+(const std::vector<T>& a, const std::vector<T>& b)
     return result;
 }
 
-std::vector<double> operator*(const std::vector<double>& A, const double& c)
+template <typename T>
+std::vector<T> operator*(const std::vector<T>& A, const T& c)
 {
 	return multArrays(A, c);
 };
 
-std::vector<double> operator*(const double& c, const std::vector<double>& A)
+template <typename T>
+std::vector<T> operator*(const T& c, const std::vector<T>& A)
 {
 	return multArrays(A, c);
 };
@@ -84,28 +87,31 @@ void fillbetaKL(const unsigned int scheme, std::vector<std::vector<double>>& bet
 	};
 }
 
-std::vector<double> cross(const std::vector<double>& A, const std::vector<double>& B)
+template <typename T>
+std::vector<T> cross(const std::vector<T>& A, const std::vector<T>& B)
 {
-	std::vector<double> c(3);
+	std::vector<T> c(3);
 	c[0] = A[1] * B[2] - B[1] * A[2];
 	c[1] = -(A[0] * B[2] - B[0] * A[2]);
 	c[2] = A[0] * B[1] - B[0] * A[1];
 	return c;
 }
 
-double dot(const std::vector<double>& A, const std::vector<double>& B)
+template <typename T>
+T dot(const std::vector<T>& A, const std::vector<T>& B)
 {
-	double val = 0;
-	for (auto qq = 0; qq < A.size(); qq++)
+	T val = 0;
+	for (unsigned int qq = 0; qq < A.size(); qq++)
 	{
 		val += A[qq] * B[qq];
 	};
 	return val;
 }
 
-double norm(const std::vector<double>& A)
+template <typename T>
+T norm(const std::vector<T>& A)
 {
-	double aNorm = 0;
+	T aNorm = 0;
 	for (unsigned int ii = 0; ii < A.size(); ii++)
 	{
 		aNorm += A[ii] * A[ii];
@@ -113,9 +119,10 @@ double norm(const std::vector<double>& A)
 	return sqrt(aNorm);
 }
 
-double sum(const std::vector<T>& A)
+template <typename T>
+T sum(const std::vector<T>& A)
 {
-	double tot = 0.0
+	T tot = 0;
 	
 	return tot;
 }

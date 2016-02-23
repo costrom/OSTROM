@@ -153,10 +153,13 @@
     <ClCompile Include="rk18.cpp" />
     <ClCompile Include="s2sdot.cpp" />
     <ClCompile Include="thesis.cpp" />
+    <ClCompile Include="usstdatm1976.cpp" />
+    <ClCompile Include="usstdatm1976data.cpp" />
     <ClCompile Include="vectorOps.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="atmos.h" />
+    <ClInclude Include="atmprops.h" />
     <ClInclude Include="cylinder.h" />
     <ClInclude Include="getDrag.h" />
     <ClInclude Include="getHX.h" />
@@ -167,6 +170,8 @@
     <ClInclude Include="s2sdot.h" />
     <ClInclude Include="shape.h" />
     <ClInclude Include="sphere.h" />
+    <ClInclude Include="usstdatm1976.h" />
+    <ClInclude Include="usstdatm1976data.h" />
     <ClInclude Include="vectorOps.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

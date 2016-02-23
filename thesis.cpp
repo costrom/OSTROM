@@ -14,27 +14,9 @@
 
 using namespace std;
 
-extern vector<double> Altitudes(100001);
-extern vector<double> Temperatures(100001);
-extern vector<double> Pressures(100001);
-extern vector<double> Densities(100001);
 extern const double pi = 3.141592653589793;
 extern const double gamma = 1.4;
 extern const double R = 287.0;
-
-void initAtmos(void)
-{
-	fstream fid;
-	fid.open("data.txt", fstream::in);
-	for (unsigned int ii = 0; ii < Altitudes.size(); ii++)
-	{
-		fid >> Altitudes[ii] >> Temperatures[ii] >> Pressures[ii] >> Densities[ii];
-	};
-	fid.close();
-};
-
-extern thread th(initAtmos);
-extern bool t_done = false;
 
 vector<double> readCasefile(void)
 {

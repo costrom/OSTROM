@@ -1,5 +1,7 @@
 #include "getHX.h"
 
+#include "atmprops.h"
+
 #include "atmos.h"
 #include "cylinder.h"
 #include "rectPrism.h"
@@ -26,8 +28,9 @@ double getHXS(const vector<double>& state, const sphere& shapeobj)
 
 	alt = norm({ state[0], state[1], state[2] }) - 6378000; // meters above spherical earth
 	v = norm({ state[3], state[4], state[5] }); // m/s
+	atmprops atmProperties(1);
 
-	atmos(alt, T, p, rho, mu, a);
+	atmos(atmProperties);
 	
 	const double qs = C * sqrt(rho / radius) * v*v*v;
 	Qdot = 0.674456486133287L * qs;
@@ -52,7 +55,9 @@ double getHXP(const vector<double>& state, const rectPrism& shapeobj)
 	alt = sqrt(state[0] * state[0] + state[1] * state[1] + state[2] * state[2]) - 6378000;
 	v = sqrt(state[3] * state[3] + state[4] * state[4] + state[5] * state[5]);
 
-	atmos(alt, T, p, rho, mu, a);
+	atmprops atmProperties(1);
+
+	atmos(atmProperties);
 
 	q = 0.5 * Ch* rho * v*v*v;
 	S = 2 * side*side + 4 * side * shapeobj.len2;
@@ -75,7 +80,9 @@ double getHXC(const vector<double>& state, const cylinder& shapeobj)
 	v = norm({ state[3], state[4], state[5] }); // m/s
 
 	double p, T, rho, mu, a;
-	atmos(alt, T, p, rho, mu, a);
+	atmprops atmProperties(1);
+
+	atmos(atmProperties);
 
 	const double radius = shapeobj.len1;
 	const long double Ch = 0.347281189736511L;

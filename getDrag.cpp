@@ -5,6 +5,8 @@
 #include "sphere.h"
 #include "vectorOps.h"
 
+#include "atmprops.h"
+
 #include <cmath>
 #include <vector>
 
@@ -51,9 +53,10 @@ double getDragS(const vector<double>& state, const sphere& shapeobj)
 	double alt = norm({ state[0], state[1], state[2] }) - 6378000; // meters
 	const double v = norm({ state[3], state[4], state[5] }); // m/s
 	double T, p, rho, mu, a, CD;
+	atmprops atmProperties(1);
 
-	atmos(alt, T, p, rho, mu, a);
-	
+	atmos(atmProperties);
+
 	double q = 0.5*rho*v*v;
 	double M_inf = v / a;
 	double Kn = fact * T / (p * radius);
@@ -84,9 +87,9 @@ double getDragP(const vector<double>& state, const rectPrism& shapeobj)
 	double alt = sqrt(state[0] * state[0] + state[1] * state[1] + state[2] * state[2]) - 6378000; // meters
 	const double v = sqrt(state[3] * state[3] + state[4] * state[4] + state[5] * state[5]); // m/s
 	double T, p, rho, mu, a, CD;
+	atmprops atmProperties(1);
 
-	atmos(alt, T, p, rho, mu, a);
-
+	atmos(atmProperties);
 	const double q = 0.5*rho*v*v;
 	const double M_inf = v / a;
 	const double Kn = fact * T / (p * shapeobj.len2);
@@ -117,9 +120,9 @@ double getDragC(const vector<double>& state, const cylinder& shapeobj)
 	double alt = norm({ state[0], state[1], state[2] }) - 6378000; // meters
 	const double v = norm({ state[3], state[4], state[5] }); // m/s // m/s
 	double T, p, rho, mu, a, CD;
+	atmprops atmProperties(1);
 
-	atmos(alt, T, p, rho, mu, a);
-
+	atmos(atmProperties);
 	const double q = 0.5*rho*v*v;
 	const double M_inf = v / a;
 	const double Kn = fact * T / (p * shapeobj.len2);
